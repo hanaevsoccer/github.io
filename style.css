@@ -1,0 +1,181 @@
+@ charset "UTF-8";
+html {
+  font-size: 100%;
+}
+body {
+  font-family: "Source Sans Pro","Hiragino Kaku Gothic ProN", Meiryo, Arial, sans-serif;
+  color: #383e45;
+  font-size: 0.9rem;
+}
+a {
+  text-decoration: none;
+}
+/*10~12の記述により、リンクについている下線が無くなった。
+「text-decorationプロパティ」はテキストの線の飾りを指定する機能がある。*/
+
+img {
+  max-width: 100%;
+}
+/*この13~15までのコードによって「img」をセレクタにし、「max-width」を100%にしたため
+ヘッダーのとこのprofileの画像が少し縮んで収まりが良くなった。*/
+
+header img {
+  margin-left: 30px;
+}
+/*この22~24行目のとこはヘッダーのprofileの画像が左に寄りすぎていたため
+ソースコードにはなかったが自分が記述した。*/
+
+
+nav li {
+  list-style: none;
+  margin-right: 50px;
+}
+/*18~20の記述により、黒丸がつかない状態でブラウザに表示されるようになった。
+「list-styleプロパティ」はリストマーカーの種類や位置、画像などを指定することが可能。*/
+/*24行目の「margin-right: 50px;」は本来のソースコードには載っていなく、自分が記述したもの
+である。デモサイトのナビゲーションメニューと自分の作ったやつとで置かれてる場所が異なったので
+見栄え良くするために自分で考えて記述した。*/
+
+.site-title {
+  width: 120px;
+  line-height: 1px;
+  padding: 10px 0;
+}
+/*「idの#logo」をセレクタにして出力しても画像は小さくならなかった。
+site-titleをセレクタに使用すると「profile」のタイトル画像が小さくなったがなぜか？
+「paddingは上下10px,左右0」での記述になっている。ここをpaddingに設定すると
+site-titleの内側に余白ができた状態で表示される。*/
+
+.site-title a {
+  display: block;
+}
+/*このsite-titleの要素は「display: block;」を指定したため
+「縦に並び」「width・height・padding・margin」プロパティで上下左右に余白を指定できるようになる。*/
+/*また、aをセレクタにしてるためインラインじゃないのかとも考えられるがhtmlファイルで
+aタグはh1の中に書かれているためblock要素でも適用したのではと感じた。*/
+/*一度写経をして、表示をすることでどのコードがどんな役割をしているのかを考えてみること*/
+
+.section-title {
+  display: inline-block;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 60px;
+  border-bottom: solid 1px #383e45;
+}
+
+.content-title {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto 100px auto;
+  padding: 0 4%;
+  text-align: center;
+}
+/*62行で「margin」の指定をしたことで「sectionタグ」の間に100px分のスペースが生まれた。*/
+/*63行でpaddingを操作したことで少しだけ右下にsectionタグが移動した。*/
+/*64行の「text-align」を中央に操作したことで「section-titleのAbout」や
+「content-tilteの画像やテキスト」なども真ん中になって表示された。*/
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+/*73行の「display: flex;」にすることで
+ナビゲーションメニューの「AboutとBicycle」がprofileの画像の下にあったが真横に移った。*/
+/*74行の「justify-content: space-between;」によってナビゲーションメニューが右端に移った。*/
+/*75行の「align-items: center;」にしたことでナビゲーションメニューが少しだけ
+下になり、profileの画像と水平方向で揃った。*/
+
+#header ul {
+  display: flex;
+  padding: 10px 0;
+}
+/*「display: flex;」のにしたことで縦に並んでたナビゲーションメニューを横並びにした。*/
+
+#header li {
+  margin-left: 30px;
+}
+/*90行で「margin-left: 30px;」によって
+ナビゲーションメニューの「AboutとBicycleの間にスペースが生まれた。」*/
+
+#header li a {
+  color: #24292e;
+}
+#header li a:hover {
+  opacity: 0.7;
+}
+/*98行の「:hover」をセレクタに指定することでカーソルを合わせた時に
+プロパティで指定した機能が適用される。「opacity」を指定したので数字によってカーソルを合わせると
+色が変化するようにデザインされている。「0なら透明、1ならそのまま黒色。」*/
+
+#mainvisual {
+  margin-bottom: 80px;
+}
+/*margin-bottomを指定したのでメインの自転車の画像とAboutの間に余白が生まれた。*/
+
+#mainvisual img {
+  width: 100%;
+  max-width: 1920px;
+  height: 600px;
+  object-fit: cover;
+}
+/*111行の「width: 100%;」mainvisualの自転車の画像が横幅いっぱいに広がった。*/
+/*「object-fitプロパティ」は置換要素のことであり <img> や <video> などの中身をコンテナーに
+どのようにはめ込むかを設定します。114行の「object-fit: cover;」を指定したことで写真が変化した。*/
+
+#about .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*「div要素のcontentクラス」をセレクタにしているため
+クラスで指定したdiv要素の範囲にプロパティの機能が適用されることになる。*/
+/*122行目の「justify-content: center;」によって画像やテキストが真ん中寄りになり
+123行目の「align-items: center;」によってテキストが画像の真ん中の位置に置かれた。*/
+
+#about img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+/*sectionタグの人の画像の操作をここでは行う。*/
+/*「widthとheightを100px」に指定すると画像が一気に小さくなった。*/
+/*さらに133行目で「border-radius」を指定したことで正方形だった画像が円形になった。
+border-radiusは一つしか値がない場合は全方向に機能が適用される。*/
+
+#about .text {
+  text-align: left;
+}
+/*「text-align」は、ブロック要素または表のセルボックス内における
+インラインレベルコンテンツの水平方向の配置を設定する機能がある。
+つまり、「text-align: left;」を「#about .text」に指定したことにより
+<section id="about">の孫要素であり、<div class="text">の子要素である
+h3とpタグのテキストに機能が適用され、センター揃えだったのが、左揃えになった。*/
+
+#bicycle ul {
+  display: flex;
+  justify-content: space-between;
+}
+/*「#bicycle ul」をセレクタにしたことで
+ulタグの子要素にプロパティの機能が適用されるようになった。*/
+/*「display: flex;」にすることで何がどうなるのか？
+まず「display: flex;」、「justify-content: space-between;」どちらか一方を
+無しで表示させると画像は超小さくなりテキストの文字も縦方向になるという最悪の状態になる。*/
+
+#bicycle li {
+  padding: 0 10px 0 10px;
+}
+/*ここは「width: 32%;」を指定したが表示させるとまた縦方向になってしまったため
+ソースコードとは異なる「padding: 0 10px 0 10px;」を指定して画像の間隔をあけることができた。*/
+
+#footer {
+  font-size: 0.5rem;
+  padding: 10px 0;
+  text-align: center;
+}
